@@ -33,7 +33,10 @@ form .cover span {
   margin-right: 10px;
 }
 
-
+.carousel {
+  padding: 25px 25px;
+  background-color:blueviolet;
+}
 
 .layout_padding {
   padding: 75px 0;

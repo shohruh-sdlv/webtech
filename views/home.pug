@@ -1,8 +1,40 @@
 extends layout.pug
 
 block content
-  p This is very simple note taking app.
+  h1 Alisher Navoi's Library Database
   p You can create notes, delete them, archive notes.
-  p Supports markdown.
-  button
-    a(href='/donate') Donate a book
+  br
+  
+  div.carousel.slide(id="carouselExampleControls" data-ride="carousel")
+    div.carousel-inner
+      div.carousel-item.active
+        div.hero_detail-container
+          h3 Increase our database!
+          p Donate your personal or unused books for people's benefit! 
+          div.d-flex.justify-content-center.justify-content-sm-start
+            a.sub_call_to-btn(href='/donate')
+              span Make a contribution
+              img(src="/static/images/right-arrow.png", alt="", srcset="")
+      
+      div.carousel-item
+        div.hero_detail-container
+          h3 View our database!
+          p We collected thousands of books! 
+          div.d-flex.justify-content-center.justify-content-sm-start
+            a.sub_call_to-btn(href='/books')
+              span See Full Book Collection
+              img(src="/static/images/right-arrow.png", alt="", srcset="")
+          
+      div.carousel-item
+        div.hero_detail-container
+          h3 Rent books!
+          p See list of books you rented! 
+          div.d-flex.justify-content-center.justify-content-sm-start
+            a.sub_call_to-btn(href='/rented')
+              span View Rented Books
+              img(src="/static/images/right-arrow.png", alt="", srcset="")
+
+    a.carousel-control-prev(href="#carouselExampleControls" role="button" data-slide="prev")
+      span.sr-only Previous    
+    a.carousel-control-next(href="#carouselExampleControls" role="button" data-slide="next")
+      span.sr-only Next
