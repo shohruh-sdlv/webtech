@@ -2,14 +2,79 @@ extend layout
 
 block content
     h2 Create note
-    if success
+    if show
         div.message Your note was successfully added.
   
-    form(method="post" action="/donate")
-        label(for="title") Title
-        input(type="text" name="title" id="title")
+    form(method="get" action="/donate")
+        div
+            label(for="title") Title
+            br
+            input(type="text" name="title" id="title")
 
-        label(for="description") Description
-        textarea(name="description" id="description" rows="5")
+        div
+            label(for="author") Author
+            br
+            input(type="text" name="author" id="author")
 
-        input(type="submit" value="Donate a book")
+        div
+            label(for="genre") Genre
+            br
+            input(type="radio" name="genre" value="adventure") 
+            label Adventure
+            input(type="radio" name="genre" value="child") 
+            label Child
+            input(type="radio" name="genre" value="detective")
+            label Detective
+            input(type="radio" name="genre" value="drama") 
+            label Drama
+            input(type="radio" name="genre" value="fiction") 
+            label Fiction
+            input(type="radio" name="genre" value="historical") 
+            label Historical
+            input(type="radio" name="genre" value="literature") 
+            label Literature
+            input(type="radio" name="genre" value="Romance") 
+            label Romance
+
+        div
+            label(for="pageCount") Page Count
+            br
+            input(type="number" name="pageCount" id="pageCount" min="1")
+        
+        div
+            label(for="cover") Pick a Cover
+            br
+            input(type="radio" name="cover" value="option1") 
+            label Cover 1
+            input(type="radio" name="cover" value="option2") 
+            label Cover 2
+            input(type="radio" name="cover" value="option3") 
+            label Cover 3
+            input(type="radio" name="cover" value="option4") 
+            label Cover 4
+            input(type="radio" name="cover" value="option5") 
+            label Cover 5
+            input(type="radio" name="cover" value="option6") 
+            label Cover 6
+            br
+            input(type="radio" name="cover" value="option7") 
+            label Cover 7
+            input(type="radio" name="cover" value="option8") 
+            label Cover 8
+            input(type="radio" name="cover" value="option9") 
+            label Cover 9
+            input(type="radio" name="cover" value="option10") 
+            label Cover 10
+            input(type="radio" name="cover" value="option11") 
+            label Cover 11
+            input(type="radio" name="cover" value="option12") 
+            label Cover 12
+
+
+        div
+            label(for="description") Description
+            br
+            textarea(name="description" id="description" rows="5")
+
+        div
+            input(type="submit" value="Donate a book")

@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const fs = require('fs')
-const PORT = 3000
+const PORT = 8080
 
 let libraryDB = []
 
@@ -27,42 +27,33 @@ app.get('/about', (req, res) => {
 })
 
 app.get('/donate', (req, res) => {
-    res.render('donate')
+    res.render('donate', {show: req.query.success})
 })
 
 app.post('/donate', (req,res) => {
     const formData = req.body
 
-    if (formData.title.trim() == '' || formData.description.trim() == '')
-    {
-        res.render('home', { error: true })
+    const book = {
+        id: generateId(),
+        title: formData.title,
+        author: formData.author,
+        genre: formData.genre,
+        pageCount: formData.pageCount,
+        cover: formData.cover,
+        description: formData.description,
+        rented: false
     }
-    else {
-        fs.readFile('./data/library.json', (err, data) => {
-            if (err) throw err
 
-            const libraryFile = JSON.parse(data)
+    libraryDB.push(book)
 
-            const book = {
-                id: generateId(),
-                title: formData.title,
-                description: formData.description,
-                done: false
-            }
-
-            libraryFile.push(book)
-
-            fs.writeFile('./data/library.json', JSON.stringify(libraryFile), (err) => {
-                if (err) throw err
-
-                fs.readFile('./data/library.json', (err,data) => {
-                    if (err) throw err
-                    res.redirect('/donate?success=1')
-                })
-            })
-
-        })
-    }
+    fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
+        if (err) {
+            res.redirect('/donate?success=0')
+        } 
+        else {
+            res.redirect('/donate?success=1')
+        }
+    })
 })
 
 app.listen(PORT, (err) => {
