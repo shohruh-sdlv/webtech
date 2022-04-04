@@ -121,7 +121,29 @@ app.get('/books/:id/update', (req, res) => {
 	const id = req.params.id
 	const book = libraryDB.find(book => book.id === id)
 
-    res.render('update', {book: book})
+    res.render('update', {book: book, show: req.query.success})
+})
+
+app.post('/books/:id/update', (req,res) => {
+    const id = req.params.id
+	const index = libraryDB.findIndex(book => book.id === id)
+    const formData = req.body
+
+    libraryDB[index].title = formData.title
+    libraryDB[index].author = formData.author
+    libraryDB[index].genre = formData.genre
+    libraryDB[index].pageCount = formData.pageCount
+    libraryDB[index].cover = formData.cover
+    libraryDB[index].description = formData.description
+
+    fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
+        if (err) {
+            res.redirect(`/books/${ id }/update?success=0`)
+        } 
+        else {
+            res.redirect(`/books/${ id }/update?success=1`)
+        }
+    })
 })
 
 app.get('/rented', (req, res) => {
