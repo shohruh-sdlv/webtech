@@ -63,9 +63,8 @@ app.get('/books', (req, res) => {
 // app.get('/books/:id', (req, res) => {
 //     const id = parseInt(req.params.id)
 //     const book = libraryDB.find(book => book.id === id)
-// 	res.render('book', {book: book})
+//     res.render('book', {book: book})
 // })
-
 
 app.get('/books/:id/delete', (req, res) => {
 	const id = parseInt(req.params.id)
