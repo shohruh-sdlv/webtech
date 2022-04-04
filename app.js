@@ -1,8 +1,18 @@
 const express = require('express')
 const app = express()
-
 const fs = require('fs')
 const PORT = 3000
+
+let libraryDB = []
+
+fs.readFile('./data/library.json', (err, data) => {
+	if (!err) {
+		libraryDB = JSON.parse(data)
+	}
+})
+
+const parser = require('body-parser')
+app.use(parser.urlencoded({extended: true}))
 
 app.set('view engine', 'pug')
 app.use('/static', express.static('public'))
@@ -35,7 +45,7 @@ app.post('/add', (req,res) => {
             const libraryFile = JSON.parse(data)
 
             const library = {
-                id: id(),
+                id: generateId(),
                 name: formData.name,
                 done: false
             }
@@ -60,9 +70,9 @@ app.post('/add', (req,res) => {
 app.listen(PORT, (err) => {
     if(err) throw err
 
-    console.log(`goof ${PORT}`)
+    console.log(`Library is running on PORT ${PORT}`)
 })
 
-function id() {
+function generateId() {
     return '_' + Math.random().toString(36).substr(2, 9)
 }
