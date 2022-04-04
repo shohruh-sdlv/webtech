@@ -1,0 +1,13 @@
+extend layout
+
+block content
+	ul.books-list
+		each book in books
+			li
+				a(href="/books/" + book.id)= book.title
+				br
+				a(href="/books/" + book.id + "/update").delete Update
+				br
+				a(href="/books/" + book.id + "/delete").delete Delete
+				br
+				a(href="/books/" + book.id + "/rent").delete Rent

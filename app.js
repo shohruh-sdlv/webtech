@@ -56,6 +56,57 @@ app.post('/donate', (req,res) => {
     })
 })
 
+app.get('/books', (req, res) => {
+	res.render('books', {books: libraryDB})
+})
+
+app.get('/books/:id', (req, res) => {
+	const id = parseInt(req.params.id)
+	const matchedBook = libraryDB.find(book => book.id === id)
+
+	res.render('book', {book: matchedBook̀})
+})
+
+// app.get('/books/:id/delete', (req, res) => {
+// 	const id = parseInt(req.params.id)
+// 	const index = libraryDB.findIndex(book => book.id === id)
+
+// 	// Delete from libraryDB array
+// 	libraryDB.splice(index, 1)
+
+// 	// Update library.json file
+// 	fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
+// 		if (err) {
+// 			res.redirect('/books?success=0')
+// 		} else {
+// 			res.redirect('/books?success=1')
+// 		}
+// 	})
+// })
+
+// app.get('/books/:id/rent', (req, res) => {
+// 	const id = parseInt(req.params.id)
+// 	const index = libraryDB.findIndex(book => book.id === id)
+
+
+// 	libraryDB[index].rented = true
+
+// 	fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
+// 		if (err) {
+// 			res.redirect('/books/'+id+'?success=0')
+// 		} else {
+// 			res.redirect('/books/'+id+'?success=1')
+// 		}
+// 	})
+// })
+
+// app.get('/rented', (req, res) => {
+// 	const books = libraryDB.filter(book => book.rented)
+
+// 	res.render('rented', {books: book})
+// })
+
+
 app.listen(PORT, (err) => {
     if(err) throw err
 

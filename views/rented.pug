@@ -1,0 +1,9 @@
+extend layout
+
+block content
+	ul.books-list
+		each book, index in books
+			li
+				a(href="/books/" + index)= book.title
+				br
+				a(href="/books/" + index + "/delete").delete Delete
