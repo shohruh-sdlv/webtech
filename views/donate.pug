@@ -1,9 +1,9 @@
 extend layout
 
 block content
-    h2 Create note
+    h2 Donate a book
     if show
-        div.message Your note was successfully added.
+        div.message Your donation was successfully added.
   
     form(method="post" action="/donate")
         div
@@ -16,59 +16,28 @@ block content
             br
             input(type="text" name="author" id="author")
 
-        div
+        div.genre
             label(for="genre") Genre
             br
-            input(type="radio" name="genre" value="adventure") 
-            label Adventure
-            input(type="radio" name="genre" value="child") 
-            label Child
-            input(type="radio" name="genre" value="detective")
-            label Detective
-            input(type="radio" name="genre" value="drama") 
-            label Drama
-            input(type="radio" name="genre" value="fiction") 
-            label Fiction
-            input(type="radio" name="genre" value="historical") 
-            label Historical
-            input(type="radio" name="genre" value="literature") 
-            label Literature
-            input(type="radio" name="genre" value="Romance") 
-            label Romance
+            
+            each genre in ["adventure", "child", "detective", "drama", "fiction", "historical", "literature", "Romance"]
+                input(type="radio" name="genre" value=genre)
+                span #{genre[0].toUpperCase() + genre.slice(1)}
 
         div
             label(for="pageCount") Page Count
             br
             input(type="number" name="pageCount" id="pageCount" min="1")
         
-        div
+        div.cover
             label(for="cover") Pick a Cover
             br
-            input(type="radio" name="cover" value="option1") 
-            label Cover 1
-            input(type="radio" name="cover" value="option2") 
-            label Cover 2
-            input(type="radio" name="cover" value="option3") 
-            label Cover 3
-            input(type="radio" name="cover" value="option4") 
-            label Cover 4
-            input(type="radio" name="cover" value="option5") 
-            label Cover 5
-            input(type="radio" name="cover" value="option6") 
-            label Cover 6
-            br
-            input(type="radio" name="cover" value="option7") 
-            label Cover 7
-            input(type="radio" name="cover" value="option8") 
-            label Cover 8
-            input(type="radio" name="cover" value="option9") 
-            label Cover 9
-            input(type="radio" name="cover" value="option10") 
-            label Cover 10
-            input(type="radio" name="cover" value="option11") 
-            label Cover 11
-            input(type="radio" name="cover" value="option12") 
-            label Cover 12
+            
+            each cover in ["option1", "option2", "option3", "option4", "option5", "option6", "option7", "option8", "option9", "option10", "option11", "option12"]
+                input(type="radio" name="cover" value=cover)
+                span Cover #{cover.slice(6)}
+                if cover.slice(6) === "6"
+                    br
 
 
         div

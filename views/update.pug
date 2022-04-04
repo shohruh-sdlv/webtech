@@ -1,7 +1,7 @@
 extend layout
 
 block content
-    h2 Update 
+    h2 Update a Book
     if show
         div.message Your note was successfully updated.
   
@@ -16,7 +16,7 @@ block content
             br
             input(type="text" name="author" id="author" value=book.author)
 
-        div
+        div.genre
             label(for="genre") Genre
             br
 
@@ -25,7 +25,7 @@ block content
                     input(type="radio" name="genre" value=`${genre}` checked) 
                 else
                     input(type="radio" name="genre" value=genre)
-                label #{genre[0].toUpperCase() + genre.slice(1)}
+                span #{genre[0].toUpperCase() + genre.slice(1)}
 
         div
             label(for="pageCount") Page Count
@@ -33,7 +33,7 @@ block content
             input(type="number" name="pageCount" id="pageCount" min="1" value=book.pageCount)
         
 
-        div
+        div.cover
             label(for="cover") Pick a Cover
             br
 
@@ -42,12 +42,12 @@ block content
                     input(type="radio" name="cover" value=`${cover}` checked) 
                 else
                     input(type="radio" name="cover" value=cover)
-                label Cover #{cover.slice(6)}
+                span Cover #{cover.slice(6)}
                 if cover.slice(6) === "6"
                     br
 
         div
-            label(for="description") Description
+            label.special(for="description") Description
             br
             textarea(name="description" id="description" rows="5") #{book.description}
 

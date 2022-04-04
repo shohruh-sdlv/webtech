@@ -1,16 +1,21 @@
 extend layout
 
 block content
+	h2 Books Collection
 	ul.books-list
 		each book in books
 			li
 				a(href="/books/" + book.id)= book.title
 				br
-				a(href="/books/" + book.id + "/update").delete Update
+				button
+					a(href="/books/" + book.id + "/update").delete Update
 				br
-				a(href="/books/" + book.id + "/delete").delete Delete
+				button
+					a(href="/books/" + book.id + "/delete").delete Delete
 				br
-				if book.rented 
-					a(href="/books/" + book.id + "/return").delete Return
+				if book.rented
+					button
+						a(href="/books/" + book.id + "/return").delete Return
 				else
-					a(href="/books/" + book.id + "/rent").delete Rent
+					button
+						a(href="/books/" + book.id + "/rent").delete Rent

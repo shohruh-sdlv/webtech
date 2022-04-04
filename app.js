@@ -109,9 +109,9 @@ app.get('/books/:id/return', (req, res) => {
 
 	fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
 		if (err) {
-			res.redirect('/rented?success=0')
+			res.redirect('/books?success=0')
 		} else {
-			res.redirect('/rented?success=1')
+			res.redirect('/books?success=1')
 		}
 	})
 })

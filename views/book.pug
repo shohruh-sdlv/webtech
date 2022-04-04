@@ -3,7 +3,15 @@ extend layout
 block content
 	h2= book.title
 	br
-	a(href="/books/" + book.id + "/rent").small-button Rent
+	button
+		a(href="/books/" + book.id + "/rent").small-button Rent
+	br
+	button
+		a(href="/books/" + book.id + "/update").delete Update
+	br
+	button
+		a(href="/books/" + book.id + "/delete").delete Delete
+
 	
 	p= book.author
 	p= book.genre
