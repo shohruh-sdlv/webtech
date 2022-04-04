@@ -1,0 +1,15 @@
+extend layout
+
+block content
+    h2 Create note
+    if success
+        div.message Your note was successfully added.
+  
+    form(method="post" action="/donate")
+        label(for="title") Title
+        input(type="text" name="title" id="title")
+
+        label(for="description") Description
+        textarea(name="description" id="description" rows="5")
+
+        input(type="submit" value="Donate a book")

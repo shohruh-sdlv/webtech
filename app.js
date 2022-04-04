@@ -19,22 +19,21 @@ app.use('/static', express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
-    fs.readFile('./data/library.json', (err, data) => {
-        if (err) throw err
-
-        const libraryFile = JSON.parse(data)
-
-        res.render('home', {bookShelf: libraryFile})
-
-    })
-
     res.render('home')
 })
 
-app.post('/add', (req,res) => {
+app.get('/about', (req, res) => {
+    res.render('about')
+})
+
+app.get('/donate', (req, res) => {
+    res.render('donate')
+})
+
+app.post('/donate', (req,res) => {
     const formData = req.body
 
-    if (formData.name.trim() == '')
+    if (formData.title.trim() == '' || formData.description.trim() == '')
     {
         res.render('home', { error: true })
     }
@@ -44,22 +43,21 @@ app.post('/add', (req,res) => {
 
             const libraryFile = JSON.parse(data)
 
-            const library = {
+            const book = {
                 id: generateId(),
-                name: formData.name,
+                title: formData.title,
+                description: formData.description,
                 done: false
             }
 
-            library.push(library)
+            libraryFile.push(book)
 
             fs.writeFile('./data/library.json', JSON.stringify(libraryFile), (err) => {
                 if (err) throw err
 
                 fs.readFile('./data/library.json', (err,data) => {
                     if (err) throw err
-
-                    const libraryFile = JSON.parse(data)
-                    res.render('home', {success: true, bookShelf: libraryFile})
+                    res.redirect('/donate?success=1')
                 })
             })
 

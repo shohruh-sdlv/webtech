@@ -1,10 +1,7 @@
 extends layout.pug
 
-block number1 
-    form.form(action='/add' method='POST')
-        input.input(type='text' placeholder='Type here' name='name')
-        button.btn Add
-
-    div.list
-        each book in bookShelf ? bookShelf : [] 
-            p.book #{ book.name }
+block content
+  p This is very simple note taking app.
+  p You can create notes, delete them, archive notes.
+  p Supports markdown.
+  a(href='/donate).button Create note
