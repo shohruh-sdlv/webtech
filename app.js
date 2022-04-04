@@ -60,11 +60,12 @@ app.get('/books', (req, res) => {
 	res.render('books', {books: libraryDB})
 })
 
-// app.get('/books/:id', (req, res) => {
-//     const id = parseInt(req.params.id)
-//     const book = libraryDB.find(book => book.id === id)
-//     res.render('book', {book: book})
-// })
+app.get('/books/:id', (req, res) => {
+    // const id = parseInt(req.params.id)
+    const id = req.params.id
+    const book = libraryDB.find(book => book.id === id)
+    res.render('book', {book: book})
+})
 
 app.get('/books/:id/delete', (req, res) => {
 	const id = parseInt(req.params.id)
@@ -83,20 +84,37 @@ app.get('/books/:id/delete', (req, res) => {
 	})
 })
 
-// app.get('/books/:id/rent', (req, res) => {
-// 	const id = parseInt(req.params.id)
-// 	const index = libraryDB.findIndex(book => book.id === id)
+app.get('/books/:id/rent', (req, res) => {
+	// const id = parseInt(req.params.id)
+	const id = req.params.id
+	const index = libraryDB.findIndex(book => book.id === id)
 
-// 	libraryDB[index].rented = true
+	libraryDB[index].rented = true
 
-// 	fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
-// 		if (err) {
-// 			res.redirect('/books/'+id+'?success=0')
-// 		} else {
-// 			res.redirect('/books/'+id+'?success=1')
-// 		}
-// 	})
-// })
+	fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
+		if (err) {
+			res.redirect('/books/'+id+'?success=0')
+		} else {
+			res.redirect('/books/'+id+'?success=1')
+		}
+	})
+})
+
+app.get('/books/:id/return', (req, res) => {
+	// const id = parseInt(req.params.id)
+	const id = req.params.id
+	const index = libraryDB.findIndex(book => book.id === id)
+
+	libraryDB[index].rented = false
+
+	fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
+		if (err) {
+			res.redirect('/rented/?success=0')
+		} else {
+			res.redirect('/rented?success=1')
+		}
+	})
+})
 
 app.get('/rented', (req, res) => {
 	const books = libraryDB.filter(book => book.rented)
