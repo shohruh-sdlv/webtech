@@ -4,7 +4,6 @@ body {
 }
 
 
-
 h1,
 h2,
 h3,
@@ -70,24 +69,24 @@ h4 {
 }
 
 
-
-
 /*header section*/
 .top_container {
   font-family: 'Poppins', sans-serif;
 }
 
-.header_section {}
+.header_section {
+  
+  background-color: #2a2a2c;
+}
 
 nav.navbar.navbar-expand-lg {}
 
 .custom_nav-container.navbar-expand-lg .navbar-nav .nav-link {
   padding: 10px 20px;
-  color: #f8d92b;
+  color: white;
   text-align: center;
   text-transform: uppercase;
 }
-
 
 
 a,
@@ -114,7 +113,6 @@ a:focus {
 }
 
 
-
 .custom_nav-container .nav_search-btn {
   background-image: url(../images/search-icon.png);
   background-size: 22px;
@@ -132,7 +130,6 @@ a:focus {
   color: #f8d92b;
   font-weight: bold;
 }
-
 
 
 .custom_nav-container {
@@ -206,7 +203,6 @@ a:focus {
 }
 
 
-
 .carousel-control-prev,
 .carousel-control-next {
   width: 45px;
@@ -225,7 +221,6 @@ a:focus {
 .carousel-control-next:hover {
   background-color: #464646;
 }
-
 
 
 .carousel-control-prev {
@@ -472,7 +467,6 @@ a:focus {
 }
 
 /* end info section */
-
 
 
 /* footer section*/
