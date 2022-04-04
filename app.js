@@ -93,9 +93,9 @@ app.get('/books/:id/rent', (req, res) => {
 
 	fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
 		if (err) {
-			res.redirect('/books/'+id+'?success=0')
+			res.redirect('/books?success=0')
 		} else {
-			res.redirect('/books/'+id+'?success=1')
+			res.redirect('/books?success=1')
 		}
 	})
 })
@@ -109,7 +109,7 @@ app.get('/books/:id/return', (req, res) => {
 
 	fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
 		if (err) {
-			res.redirect('/rented/?success=0')
+			res.redirect('/rented?success=0')
 		} else {
 			res.redirect('/rented?success=1')
 		}
