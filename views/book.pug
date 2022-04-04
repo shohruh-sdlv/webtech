@@ -2,6 +2,7 @@ extend layout
 
 block content
 	h1= book.title
-		a(href="/books/" + book.id + "/rent").small-button Rent
-
-	p= book.body
+	br
+	a(href="/books/" + book.id + "/rent").small-button Rent
+	
+	p= book.description

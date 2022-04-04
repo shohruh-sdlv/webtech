@@ -61,11 +61,11 @@ app.get('/books', (req, res) => {
 })
 
 // app.get('/books/:id', (req, res) => {
-// 	const id = parseInt(req.params.id)
-// 	const book = libraryDB.find(book => book.id === id)
-
+//     const id = parseInt(req.params.id)
+//     const book = libraryDB.find(book => book.id === id)
 // 	res.render('book', {book: book})
 // })
+
 
 app.get('/books/:id/delete', (req, res) => {
 	const id = parseInt(req.params.id)
@@ -88,7 +88,6 @@ app.get('/books/:id/delete', (req, res) => {
 // 	const id = parseInt(req.params.id)
 // 	const index = libraryDB.findIndex(book => book.id === id)
 
-
 // 	libraryDB[index].rented = true
 
 // 	fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
@@ -100,11 +99,11 @@ app.get('/books/:id/delete', (req, res) => {
 // 	})
 // })
 
-// app.get('/rented', (req, res) => {
-// 	const books = libraryDB.filter(book => book.rented)
+app.get('/rented', (req, res) => {
+	const books = libraryDB.filter(book => book.rented)
 
-// 	res.render('rented', {books: book})
-// })
+	res.render('rented', {books: books})
+})
 
 
 app.listen(PORT, (err) => {
