@@ -116,6 +116,14 @@ app.get('/books/:id/return', (req, res) => {
 	})
 })
 
+app.get('/books/:id/update', (req, res) => {
+	// const id = parseInt(req.params.id)
+	const id = req.params.id
+	const book = libraryDB.find(book => book.id === id)
+
+    res.render('update', {book: book})
+})
+
 app.get('/rented', (req, res) => {
 	const books = libraryDB.filter(book => book.rented)
 
