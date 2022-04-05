@@ -1,25 +1,7 @@
 extend layout
 
 block content
-	h2 Books Collection
-	ul.books-list
-		each book in books
-			li
-				a(href="/books/" + book.id)= book.title
-				br
-				button
-					a(href="/books/" + book.id + "/update").delete Update
-				br
-				button
-					a(href="/books/" + book.id + "/delete").delete Delete
-				br
-				if book.rented
-					button
-						a(href="/books/" + book.id + "/return").delete Return
-				else
-					button
-						a(href="/books/" + book.id + "/rent").delete Rent
-
+	h2(style="margin-bottom: 20px;") Books Collection
 
 	div
 		table.table.mydatatable.table-responsive.dataTable.no-footer(id="booksTable" role="grid" aria-describedby="booksTable_info" style="width: 826px;")
@@ -27,6 +9,7 @@ block content
 				tr(role="row")
 					th(scope="col" class="sorting_disabled" rowspan="1" colspan="1" style="width: 89px;") Picture
 					th(scope="col" class="sorting_disabled" rowspan="1" colspan="1" style="width: 400px;") Title
+					th(scope="col" class="sorting_disabled" rowspan="1" colspan="1" style="width: 200px;") Genre
 					th(scope="col" class="sorting_disabled" rowspan="1" colspan="1" style="width: 200px;") Author
 					th(scope="col" class="sorting_disabled" rowspan="1" colspan="1" style="width: 200px;") Actions
 
@@ -35,28 +18,33 @@ block content
 					tr(role="row")
 						td.row1
 							div.bookImg
-								img(src="/static/images/option1.png", alt="", srcset="")
+								img(src=`/static/images/${book.cover}.png`, alt="", srcset="")
 					
 						td.row2
 							div.bookTitle
-								a(href="/") Title
+								a(href="/books/" + book.id) #{book.title}
+								p(style="font-size: 12px;") Page Count: #{book.pageCount}
 						
 						td.row3
-							div.bookAuthor
-								h6 Author
-								p Page Count: num
+							div.bookGenre
+								h6 #{String(book.genre)[0].toUpperCase() + String(book.genre).slice(1)}					
 						td.row4
+							div.bookAuthor
+								h6 #{book.author}
+						td.row5
 							div.bookButtons
-								button
+								button(style="border: solid 5px blue !important;")
 									a(href="/books/" + book.id + "/update").delete Update
 								br
-								button
+								br
+								button(style="border: solid 5px red !important;")
 									a(href="/books/" + book.id + "/delete").delete Delete
 								br
+								br
 								if book.rented
-									button
+									button(style="border: solid 5px green !important;")
 										a(href="/books/" + book.id + "/return").delete Return
 								else
-									button
+									button(style="border: solid 5px yellow !important;")
 										a(href="/books/" + book.id + "/rent").delete Rent
 
