@@ -7,6 +7,7 @@ This is Alisher Navoi's Nationaly Libarary Database, where all books are stored 
 ## How to run:
 
 node app - to run on localhost 8080
+
 npm install - to install all dependecies
 
 ## Dependecies
