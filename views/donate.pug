@@ -3,9 +3,9 @@ extend layout
 block content
     h2 Donate a book
     if show
-        div.message Your donation was successfully added.
+        div.message(style="color:green;")  Your donation was successfully added.
     if error
-        div.error Failed validation
+        div.erro(style="color:red;") r Failed validation
   
     form(method="post" action="/donate")
         div

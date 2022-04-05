@@ -3,9 +3,9 @@ extend layout
 block content
     h2 Update a Book
     if show
-        div.message Book was successfully updated.
+        div.message(style="color:green;") Book was successfully updated.
     if error
-        div.error Failed validation
+        div.error(style="color:red;")  Failed validation
   
     form(method="post" action=`/books/${ book.id }/update`)
         div
