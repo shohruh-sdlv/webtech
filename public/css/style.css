@@ -38,6 +38,14 @@ form .cover span {
   background-color:blueviolet;
 }
 
+.bookImg img {
+  width: 75px;
+}
+
+tr th {
+  text-align: center !important;
+}
+
 .layout_padding {
   padding: 75px 0;
 }

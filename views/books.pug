@@ -19,3 +19,44 @@ block content
 				else
 					button
 						a(href="/books/" + book.id + "/rent").delete Rent
+
+
+	div
+		table.table.mydatatable.table-responsive.dataTable.no-footer(id="booksTable" role="grid" aria-describedby="booksTable_info" style="width: 826px;")
+			thead.listTableHead
+				tr(role="row")
+					th(scope="col" class="sorting_disabled" rowspan="1" colspan="1" style="width: 89px;") Picture
+					th(scope="col" class="sorting_disabled" rowspan="1" colspan="1" style="width: 400px;") Title
+					th(scope="col" class="sorting_disabled" rowspan="1" colspan="1" style="width: 200px;") Author
+					th(scope="col" class="sorting_disabled" rowspan="1" colspan="1" style="width: 200px;") Actions
+
+			tbody
+				each book in books
+					tr(role="row")
+						td.row1
+							div.bookImg
+								img(src="/static/images/option1.png", alt="", srcset="")
+					
+						td.row2
+							div.bookTitle
+								a(href="/") Title
+						
+						td.row3
+							div.bookAuthor
+								h6 Author
+								p Page Count: num
+						td.row4
+							div.bookButtons
+								button
+									a(href="/books/" + book.id + "/update").delete Update
+								br
+								button
+									a(href="/books/" + book.id + "/delete").delete Delete
+								br
+								if book.rented
+									button
+										a(href="/books/" + book.id + "/return").delete Return
+								else
+									button
+										a(href="/books/" + book.id + "/rent").delete Rent
+
