@@ -48,10 +48,11 @@ block content
                 if cover.slice(6) === "6"
                     br
 
+        br
         div.photoRow
-            div.photoColummn
-            each cover in ["option1", "option2", "option3", "option4", "option5", "option6", "option7", "option8", "option9", "option10", "option11", "option12"]
-                img(src=`/static/images/${book.cover}.png`, alt="", srcset="")
+            div.photoColumn
+                each cover in ["option1", "option2", "option3", "option4", "option5", "option6", "option7", "option8", "option9", "option10", "option11", "option12"]
+                    img.coverImg(src=`/static/images/${cover}.png`, alt="", srcset="")
             
 
         div

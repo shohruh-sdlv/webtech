@@ -81,7 +81,6 @@ tr th {
   -ms-flex-wrap: wrap; /* IE10 */
   flex-wrap: wrap;
   padding: 0 4px;
-  max-width: 500px;
 }
 
 .photoColummn {
@@ -89,12 +88,18 @@ tr th {
   flex: 25%;
   max-width: 25%;
   padding: 0 4px;
+  display: flex;
 }
 
 .photoColummn img {
   margin-top: 8px;
   vertical-align: middle;
-  width: 100%;
+  width: 150px !important;
+}
+
+.coverImg {
+  width: 120px !important;
+  margin-right: 5px;
 }
 
 .layout_padding {
