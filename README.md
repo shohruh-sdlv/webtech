@@ -4,23 +4,23 @@
 
 This is Alisher Navoi's Nationaly Libarary Database, where all books are stored and managed. You can view, donate, update, delete, rent (return) stored books.
 
-##How to run:
+## How to run:
 
 node app - to run on localhost 8080
 npm install - to install all dependecies
 
-##Dependecies
+## Dependecies
 
 - express
 - pug
 
-##Link to GitHub:
+## Link to GitHub:
 https://github.com/shohruh-sdlv/webtech/
 
-##Link to Host "Gitch":
+## Link to Host "Gitch":
 https://shared-oasis-oatmeal.glitch.me
 
-##Project Structure:
+## Project Structure:
 - /app.js
 - /package.json
 - /package-lock.json
