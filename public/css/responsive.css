@@ -60,6 +60,12 @@
         padding: 20px;
     }
 
+    .photoColumn {
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
+      }
+
 }
 
 @media (max-width: 576px) {
@@ -100,6 +106,12 @@
 
         transform: translateY(-60px);
     }
+
+    .photoColumn {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+      }
 }
 
 @media (max-width: 480px) {}

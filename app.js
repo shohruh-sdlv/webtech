@@ -32,28 +32,31 @@ app.get('/donate', (req, res) => {
 
 app.post('/donate', (req,res) => {
     const formData = req.body
-
-    const book = {
-        id: generateId(),
-        title: formData.title,
-        author: formData.author,
-        genre: formData.genre,
-        pageCount: formData.pageCount,
-        cover: formData.cover,
-        description: formData.description,
-        rented: false
-    }
-
-    libraryDB.push(book)
-
-    fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
-        if (err) {
-            res.redirect('/donate?success=0')
-        } 
-        else {
-            res.redirect('/donate?success=1')
+    if (formData.title.trim() == '' || formData.author.trim() == '' || formData.genre === undefined || formData.cover === undefined || formData.description.trim() == '' || formData.pageCount === undefined) {
+        res.render('donate', { error: true })
+    } else {
+        const book = {
+            id: generateId(),
+            title: formData.title,
+            author: formData.author,
+            genre: formData.genre,
+            pageCount: formData.pageCount,
+            cover: formData.cover,
+            description: formData.description,
+            rented: false
         }
-    })
+
+        libraryDB.push(book)
+
+        fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
+            if (err) {
+                res.redirect('/donate?success=0')
+            } 
+            else {
+                res.redirect('/donate?success=1')
+            }
+        })
+    }
 })
 
 app.get('/books', (req, res) => {
@@ -68,7 +71,7 @@ app.get('/books/:id', (req, res) => {
 })
 
 app.get('/books/:id/delete', (req, res) => {
-	const id = parseInt(req.params.id)
+	const id = req.params.id
 	const index = libraryDB.findIndex(book => book.id === id)
 
 	// Delete from libraryDB array
@@ -129,21 +132,26 @@ app.post('/books/:id/update', (req,res) => {
 	const index = libraryDB.findIndex(book => book.id === id)
     const formData = req.body
 
-    libraryDB[index].title = formData.title
-    libraryDB[index].author = formData.author
-    libraryDB[index].genre = formData.genre
-    libraryDB[index].pageCount = formData.pageCount
-    libraryDB[index].cover = formData.cover
-    libraryDB[index].description = formData.description
+    if (formData.title.trim() == '' || formData.author.trim() == '' || formData.genre === undefined || formData.cover === undefined || formData.description.trim() == '' || formData.pageCount === undefined) {
+        res.render(`/books/${ id }/update`, { error: true })
 
-    fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
-        if (err) {
-            res.redirect(`/books/${ id }/update?success=0`)
-        } 
-        else {
-            res.redirect(`/books/${ id }/update?success=1`)
-        }
-    })
+    } else {
+        libraryDB[index].title = formData.title
+        libraryDB[index].author = formData.author
+        libraryDB[index].genre = formData.genre
+        libraryDB[index].pageCount = formData.pageCount
+        libraryDB[index].cover = formData.cover
+        libraryDB[index].description = formData.description
+
+        fs.writeFile('./data/library.json', JSON.stringify(libraryDB), (err) => {
+            if (err) {
+                res.redirect(`/books/${ id }/update?success=0`)
+            } 
+            else {
+                res.redirect(`/books/${ id }/update?success=1`)
+            }
+        })
+    }
 })
 
 app.get('/rented', (req, res) => {

@@ -46,6 +46,57 @@ tr th {
   text-align: center !important;
 }
 
+.controlButtons {
+  margin-top: 50px;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.controlButtons button {
+  margin-right: 20px;
+}
+
+.BookInfo {
+  margin-top: 50px;
+}
+.BookInfo h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bookInt {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.photoRow {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+  max-width: 500px;
+}
+
+.photoColummn {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.photoColummn img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
 .layout_padding {
   padding: 75px 0;
 }

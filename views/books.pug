@@ -33,6 +33,10 @@ block content
 								h6 #{book.author}
 						td.row5
 							div.bookButtons
+								button(style="border: solid 5px black !important;")
+									a(href="/books/" + book.id) View
+								br
+								br
 								button(style="border: solid 5px blue !important;")
 									a(href="/books/" + book.id + "/update").delete Update
 								br

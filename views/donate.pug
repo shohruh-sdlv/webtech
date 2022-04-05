@@ -4,6 +4,8 @@ block content
     h2 Donate a book
     if show
         div.message Your donation was successfully added.
+    if error
+        div.error Failed validation
   
     form(method="post" action="/donate")
         div
@@ -27,7 +29,7 @@ block content
         div
             label(for="pageCount") Page Count
             br
-            input(type="number" name="pageCount" id="pageCount" min="1")
+            input(type="number" name="pageCount" id="pageCount" min="1" required)
         
         div.cover
             label(for="cover") Pick a Cover

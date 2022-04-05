@@ -2,19 +2,46 @@ extend layout
 
 block content
 	h2= book.title
-	br
-	button
-		a(href="/books/" + book.id + "/rent").small-button Rent
-	br
-	button
-		a(href="/books/" + book.id + "/update").delete Update
-	br
-	button
-		a(href="/books/" + book.id + "/delete").delete Delete
 
-	
-	p= book.author
-	p= book.genre
-	p= book.pageCount
-	p= book.cover
-	p= book.description
+	div.container
+		div.row
+			div.col-md-3.col-sm-3.bookInt
+				div.getBookImg
+					img(src=`/static/images/${book.cover}.png`, alt="", srcset="")
+
+			div.col-md-6.col-sm-6.BookInfo
+				h3 Book Information 
+				div
+					span(style="font-weight: bold;") Author: 
+					span #{book.author}
+					br
+					span(style="font-weight: bold;") Genre: 
+					span #{String(book.genre)[0].toUpperCase() + String(book.genre).slice(1)}	
+					br
+					span(style="font-weight: bold;") Page Count: 
+					span #{book.pageCount}
+					br
+					span(style="font-weight: bold;") Description: 
+					span #{book.description}
+					
+				div.controlButtons
+					button(style="border: solid 5px blue !important;")
+						a(href="/books/" + book.id + "/update").delete Update
+					br
+					
+					button(style="border: solid 5px red !important;")
+						a(href="/books/" + book.id + "/delete").delete Delete
+					br
+					
+					if book.rented
+						button(style="border: solid 5px green !important;")
+							a(href="/books/" + book.id + "/return").delete Return
+					else
+						button(style="border: solid 5px yellow !important;")
+							a(href="/books/" + book.id + "/rent").delete Rent
+					br
+					br
+					br
+				a.sub_call_to-btn(href='/books' style="")
+					span Back to list
+					img(src="/static/images/right-arrow.png", alt="", srcset="")

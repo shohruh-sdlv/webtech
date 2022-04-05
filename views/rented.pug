@@ -33,6 +33,10 @@ block content
 								h6 #{book.author}
 						td.row5
 							div.bookButtons
+								button(style="border: solid 5px black !important;")
+									a(href="/books/" + book.id) View
+								br
+								br
 								if book.rented
 									button(style="border: solid 5px green !important;")
 										a(href="/books/" + book.id + "/return").delete Return

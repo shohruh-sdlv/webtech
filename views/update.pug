@@ -3,7 +3,9 @@ extend layout
 block content
     h2 Update a Book
     if show
-        div.message Your note was successfully updated.
+        div.message Book was successfully updated.
+    if error
+        div.error Failed validation
   
     form(method="post" action=`/books/${ book.id }/update`)
         div
@@ -30,7 +32,7 @@ block content
         div
             label(for="pageCount") Page Count
             br
-            input(type="number" name="pageCount" id="pageCount" min="1" value=book.pageCount)
+            input(type="number" name="pageCount" id="pageCount" min="1" value=`${book.pageCount}` required)
         
 
         div.cover
@@ -45,6 +47,12 @@ block content
                 span Cover #{cover.slice(6)}
                 if cover.slice(6) === "6"
                     br
+
+        div.photoRow
+            div.photoColummn
+            each cover in ["option1", "option2", "option3", "option4", "option5", "option6", "option7", "option8", "option9", "option10", "option11", "option12"]
+                img(src=`/static/images/${book.cover}.png`, alt="", srcset="")
+            
 
         div
             label.special(for="description") Description
